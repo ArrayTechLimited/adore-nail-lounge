@@ -1,0 +1,122 @@
+.gallery {
+  padding: var(--section-y) var(--section-x);
+  background: var(--a-ground);
+}
+
+.head {
+  margin-bottom: var(--space-4);
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--a-accent);
+  margin-bottom: var(--space-1);
+}
+
+.heading {
+  font-size: 30px;
+  line-height: 1.06;
+  color: var(--a-ink);
+}
+
+.fullLink {
+  display: none;
+}
+
+/* CSS masonry: the columns absorb the varying photo heights. */
+.grid {
+  columns: 2;
+  column-gap: var(--space-2);
+}
+
+.tile {
+  break-inside: avoid;
+  margin: 0 0 var(--space-2);
+}
+
+.more {
+  margin-top: var(--space-3);
+}
+
+.more a {
+  min-height: 52px;
+}
+
+@media (min-width: 1024px) {
+  .gallery {
+    border-top: 1px solid var(--hairline-light);
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+
+  .eyebrow {
+    margin-bottom: var(--space-2);
+  }
+
+  .heading {
+    font-size: 52px;
+    line-height: 1.02;
+  }
+
+  .fullLink {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--a-accent);
+    white-space: nowrap;
+    transition: color 0.25s ease;
+  }
+
+  .fullLink:hover {
+    color: var(--a-ink);
+  }
+
+  .grid {
+    columns: 3;
+    column-gap: var(--space-3);
+  }
+
+  .tile {
+    margin-bottom: var(--space-3);
+  }
+
+  .more {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: var(--space-6);
+  }
+
+  .more a {
+    width: auto;
+    min-height: 54px;
+    justify-content: center;
+    gap: var(--space-4);
+  }
+}
+
+/* The mobile gallery shows a four-photo subset of the same set. */
+.desktopOnlyTile {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .desktopOnlyTile {
+    display: block;
+  }
+}
+
+.divider {
+  height: 2px;
+  background: var(--a-accent);
+}

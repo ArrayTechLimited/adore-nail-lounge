@@ -1,0 +1,81 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--a-soft) 60%, var(--a-ground));
+  /* Inset hairline, not a border, so it does not affect box size. */
+  outline: 1px solid var(--a-soft);
+  outline-offset: -1px;
+}
+
+.onDark {
+  background: color-mix(in srgb, var(--a-deep) 80%, var(--a-ink));
+  outline-color: var(--a-accent);
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s var(--ease);
+}
+
+.cover .media {
+  object-fit: cover;
+}
+
+.natural .media {
+  object-fit: cover;
+}
+
+.zoom:hover .media {
+  transform: scale(1.04);
+}
+
+/* Labelled placeholder, shown until real photography lands. */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  text-align: center;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--a-accent);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 10px,
+    color-mix(in srgb, var(--a-accent) 7%, transparent) 10px 11px
+  );
+}
+
+.onDark .placeholder {
+  color: var(--a-glow);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent 0 10px,
+    color-mix(in srgb, var(--a-glow) 10%, transparent) 10px 11px
+  );
+}
+
+.placeholderMark {
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .media {
+    transition: none;
+  }
+
+  .zoom:hover .media {
+    transform: none;
+  }
+}

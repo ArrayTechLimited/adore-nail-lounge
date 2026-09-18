@@ -1,0 +1,159 @@
+.footer {
+  background: var(--a-deep);
+  padding: var(--space-8) var(--space-4) var(--space-6);
+}
+
+.logo {
+  height: 44px;
+  width: auto;
+  margin-bottom: var(--space-4);
+}
+
+.tagline {
+  font-size: 13px;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--on-dark-muted);
+  margin-bottom: var(--space-4);
+}
+
+.ctas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.ctas a {
+  min-height: 54px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--hairline-dark);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.columnHead {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--a-glow);
+}
+
+.columnLink {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--on-dark);
+  transition: color 0.25s ease;
+}
+
+.columnLink:hover {
+  color: var(--a-glow);
+}
+
+.columnText {
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 300;
+  color: var(--on-dark-muted);
+}
+
+/* The desktop footer adds a Hours column, a Follow column and a legal row;
+   mobile carries Visit in their place. */
+.desktopOnly {
+  display: none;
+}
+
+.columns .mobileOnlyColumn {
+  display: flex;
+}
+
+.legal {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    padding: calc(var(--space-8) * 1.8) var(--space-8) var(--space-8);
+  }
+
+  .upper {
+    display: flex;
+    justify-content: space-between;
+    gap: calc(var(--space-8) * 1.5);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--hairline-dark);
+  }
+
+  .brand {
+    max-width: 420px;
+  }
+
+  .logo {
+    height: 52px;
+  }
+
+  .tagline {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: var(--space-6);
+  }
+
+  .ctas {
+    flex-direction: row;
+    gap: var(--space-2);
+    margin-bottom: 0;
+  }
+
+  .ctas a {
+    width: auto;
+    min-height: 52px;
+    justify-content: center;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+  }
+
+  .columns {
+    display: flex;
+    gap: calc(var(--space-8) * 1.75);
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .column {
+    gap: var(--space-3);
+  }
+
+  .columnLink,
+  .columnText {
+    font-size: 14px;
+  }
+
+  .desktopOnly {
+    display: flex;
+  }
+
+  .columns .mobileOnlyColumn {
+    display: none;
+  }
+
+  .legal {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding-top: var(--space-4);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--on-dark-muted);
+  }
+}

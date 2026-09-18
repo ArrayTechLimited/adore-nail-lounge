@@ -1,0 +1,85 @@
+/* Desktop-only section. */
+.room {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .room {
+    display: flex;
+    align-items: stretch;
+    background: var(--a-ground);
+  }
+}
+
+.media {
+  width: 46%;
+  padding: var(--space-6) 0 var(--space-6) var(--space-6);
+}
+
+.copy {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--space-8) * 1.6) var(--space-8);
+}
+
+.eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--a-accent);
+  margin-bottom: var(--space-2);
+}
+
+.heading {
+  font-size: 52px;
+  line-height: 1.02;
+  color: var(--a-ink);
+  margin-bottom: var(--space-4);
+}
+
+.rule {
+  height: 2px;
+  width: 110px;
+  background: var(--a-accent);
+  margin-bottom: var(--space-6);
+}
+
+.body {
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 300;
+  color: var(--on-light-muted);
+  max-width: 520px;
+  text-wrap: pretty;
+  margin-bottom: var(--space-6);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--hairline-light);
+}
+
+.statValue {
+  font-family: var(--font-display), Didot, Georgia, serif;
+  font-size: 34px;
+  color: var(--a-accent);
+}
+
+.statUnit {
+  font-size: 20px;
+}
+
+.statCaption {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-light-faint);
+}

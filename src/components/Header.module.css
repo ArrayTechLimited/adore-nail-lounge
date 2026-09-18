@@ -1,0 +1,279 @@
+/* ---- Utility bar (desktop only — no room on mobile) ---- */
+.utilityBar {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .utilityBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-2) var(--space-8);
+    background: var(--a-ink);
+  }
+}
+
+.utilityItem {
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--on-dark-muted);
+  /* Must not wrap — the stale reference capture shows these wrapping; they do not. */
+  white-space: nowrap;
+}
+
+.utilityCenter {
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--a-glow);
+  white-space: nowrap;
+}
+
+/* ---- Header ---- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--a-ground);
+  border-bottom: 1px solid var(--hairline-light);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.desktopNav {
+  display: none;
+}
+
+.mobileActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--a-ink);
+  background: transparent;
+  color: var(--a-ink);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.iconButton:hover {
+  background: var(--a-ink);
+  color: var(--a-ground);
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  min-height: 44px;
+  padding: 11px 10px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 24px;
+  background: var(--a-ink);
+  transition: transform 0.25s var(--ease), opacity 0.2s ease;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (min-width: 1024px) {
+  .bar {
+    gap: var(--space-8);
+    padding: var(--space-4) var(--space-8);
+  }
+
+  .logo {
+    height: 44px;
+    margin-right: auto;
+  }
+
+  .desktopNav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-8);
+  }
+
+  .mobileActions {
+    display: none;
+  }
+}
+
+.navLink {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--a-ink);
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 3px;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.navLink:hover {
+  color: var(--a-accent);
+  border-bottom-color: var(--a-glow);
+}
+
+.navLinkCurrent {
+  color: var(--a-accent);
+  border-bottom-color: var(--a-accent);
+}
+
+.navLinkCurrent:hover {
+  border-bottom-color: var(--a-accent);
+}
+
+.headerCtas {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.headerBtn {
+  min-height: 44px;
+  gap: var(--space-2);
+  padding-inline: var(--space-4);
+}
+
+/* ---- Mobile drawer ---- */
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  background: var(--a-deep);
+  padding: var(--space-4) var(--space-4) var(--space-8);
+  animation: drawerIn 0.35s var(--ease);
+}
+
+@keyframes drawerIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.drawerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-6);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+
+.drawerLogo {
+  height: 40px;
+  width: auto;
+}
+
+.drawerClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--a-glow);
+  background: transparent;
+  color: var(--a-glow);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.drawerClose:hover {
+  background: var(--a-glow);
+  color: var(--a-deep);
+}
+
+.drawerNav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-8) 0;
+  margin-bottom: auto;
+}
+
+.drawerLink {
+  font-family: var(--font-display), Didot, Georgia, serif;
+  font-size: 34px;
+  line-height: 1.1;
+  color: var(--on-dark);
+  transition: color 0.25s ease;
+}
+
+.drawerLink:hover {
+  color: var(--a-glow);
+}
+
+.drawerLinkCurrent {
+  color: var(--a-glow);
+  font-style: italic;
+}
+
+.drawerCtas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+@media (min-width: 1024px) {
+  .drawer {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer {
+    animation: none;
+  }
+
+  .hamburger span {
+    transition: none;
+  }
+}

@@ -1,0 +1,232 @@
+/* ==========================================================================
+   Adore Nail Lounge — token layer + motion system
+   Palette: "espresso & rosewater". Six values do all the work.
+   ========================================================================== */
+
+:root {
+  /* Ground / ink */
+  --a-ground: #f8f1ec;
+  --a-soft: #f0dcd4;
+  --a-ink: #2c1a17;
+  --a-deep: #3a211d;
+  --a-accent: #8a453d;
+  /* The rose. Only ever used on dark grounds, where it has contrast to glow. */
+  --a-glow: #e9b7ad;
+
+  /* Supporting literals */
+  --on-dark: #fdf6f3;
+  --on-dark-muted: #d9bab2;
+  --on-light-muted: #6f5049;
+  --on-light-faint: #7d5b53;
+
+  --hairline-light: color-mix(in srgb, #2c1a17 16%, transparent);
+  --hairline-dark: color-mix(in srgb, #fdf6f3 18%, transparent);
+  --row-hover: color-mix(in srgb, #2c1a17 4%, transparent);
+
+  /* 4px scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Section padding: mobile 32/16, desktop 51.2/32 (space-8 * 1.6) */
+  --section-y: var(--space-8);
+  --section-x: var(--space-4);
+
+  --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --section-y: calc(var(--space-8) * 1.6);
+    --section-x: var(--space-8);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--a-ground);
+  color: var(--a-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Radius is 0 everywhere and no element carries a shadow. Depth comes from
+   colour mass and hairlines only — this is load-bearing for the aesthetic. */
+h1,
+h2 {
+  font-family: var(--font-display), Didot, Georgia, serif;
+  font-weight: 400;
+  font-optical-sizing: auto;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+:focus-visible {
+  outline: 2px solid var(--a-accent);
+  outline-offset: 2px;
+}
+
+.dark-ground :focus-visible {
+  outline-color: var(--a-glow);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Motion
+   Three primitives — rise, bar, tile — each triggered when its containing
+   section scrolls into view, so every section performs its own entrance.
+
+   The resting (visible) state is the CSS DEFAULT. The hidden start state only
+   exists while <html data-armed> is set, and arming happens in JS only once the
+   animation clock is verified to be advancing. If JS fails, is blocked, or the
+   observer never fires, content is visible rather than stranded at opacity 0.
+   -------------------------------------------------------------------------- */
+
+[data-reveal] {
+  transition:
+    opacity 0.85s var(--ease) var(--d, 0s),
+    transform 0.85s var(--ease) var(--d, 0s),
+    clip-path 0.95s var(--ease) var(--d, 0s);
+}
+
+[data-reveal="bar"] {
+  transform-origin: left;
+  transition:
+    transform 0.7s var(--ease) var(--d, 0s);
+}
+
+[data-armed] [data-reveal="rise"] {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-armed] [data-reveal="bar"] {
+  transform: scaleX(0);
+}
+
+[data-armed] [data-reveal="tile"] {
+  opacity: 0;
+  clip-path: inset(16% 0 0 0);
+  transform: translateY(18px) scale(0.97);
+}
+
+[data-armed] [data-in] [data-reveal="rise"],
+[data-armed] [data-reveal="rise"][data-in] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-armed] [data-in] [data-reveal="bar"],
+[data-armed] [data-reveal="bar"][data-in] {
+  transform: scaleX(1);
+}
+
+[data-armed] [data-in] [data-reveal="tile"],
+[data-armed] [data-reveal="tile"][data-in] {
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+  transform: none;
+}
+
+@keyframes adorePulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+
+/* Reduced motion forces the resting state outright, rather than merely
+   disabling the transition — content must never be left mid-entrance. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    transition: none !important;
+  }
+
+  [data-armed] [data-reveal],
+  [data-armed] [data-reveal="rise"],
+  [data-armed] [data-reveal="tile"] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+
+  [data-armed] [data-reveal="bar"] {
+    transform: scaleX(1) !important;
+  }
+
+  .pulse-dot {
+    animation: none !important;
+  }
+}
+
+/* Responsive copy swaps — the two breakpoints carry different label wording. */
+.only-mobile {
+  display: inline;
+}
+
+.only-desktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .only-mobile {
+    display: none;
+  }
+
+  .only-desktop {
+    display: inline;
+  }
+}
