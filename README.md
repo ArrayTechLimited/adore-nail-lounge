@@ -117,6 +117,21 @@ Vercel's Hobby plan is for non-commercial use. A demo shown to a prospect fits;
 the salon's live business site does not — that needs Pro. Budget for it, or move
 to Cloudflare Pages or Netlify, whose free tiers permit commercial use.
 
+### Dependency security
+
+`npm audit` should stay clean of anything reachable by this site. Current state:
+
+- **next 15.5.26** — the 15.5.4 the project started on carried a critical advisory
+  set, including unauthenticated RCE in the Image Optimization API when AVIF is
+  served. Every photo on this page goes through that optimizer, so it was
+  directly exposed. Patched.
+- **sharp** pinned to `^0.35.4` via an `overrides` entry — Next 15.5.26 accepts
+  `^0.34.3 || ^0.35.4`, and the 0.34 line carries libvips/libheif advisories.
+- **postcss** still reports advisories that only a Next 16 major upgrade clears.
+  They are build-time issues — arbitrary `.map` reads and stringify XSS via
+  attacker-controlled CSS — and every stylesheet here is first-party, so nothing
+  reachable is affected. Revisit when upgrading to Next 16 is otherwise worth it.
+
 ## Known deviations from the handoff
 
 - **Logo.** The handoff footer used `filter: invert(1)` on the dark mark. This ships a real
