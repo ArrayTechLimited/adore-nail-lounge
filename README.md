@@ -48,6 +48,13 @@ while keeping their background full-bleed, so the alternating espresso and
 rosewater masses still run edge to edge on any monitor and the frames are
 identical at 1440, 1920 and 2560.
 
+The menu/review row is the one section whose two colours sit on its child
+columns rather than on the section, so the bleed is pushed into those columns:
+the rosewater panel absorbs it on the left, the espresso panel on the right.
+Each colour reaches its own edge, the accent seam stays on the grid's split
+point, and the headings still line up with the gallery above and the visit
+below.
+
 ## Photography
 
 Every slot is filled with a distinct photo: the hero (pedicure), "the room"

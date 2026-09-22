@@ -6,7 +6,12 @@
 @media (min-width: 1024px) {
   .row {
     flex-direction: row;
-    padding-inline: var(--bleed);
+  }
+
+  /* The rosewater panel runs to the left edge; its content still starts on the
+     1440 grid, so it lines up with the gallery above and the visit below. */
+  .row .menu {
+    padding-left: calc(var(--section-x) + var(--bleed));
   }
 }
 
@@ -204,8 +209,9 @@
 
 @media (min-width: 1024px) {
   .review {
-    width: 520px;
-    flex: 0 0 520px;
+    width: calc(520px + var(--bleed));
+    flex: 0 0 calc(520px + var(--bleed));
+    padding-right: calc(var(--section-x) + var(--bleed));
     background: var(--a-deep);
     border-left: 2px solid var(--a-accent);
   }
