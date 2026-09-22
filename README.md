@@ -36,15 +36,23 @@ npm run typecheck
 
 ## Photography
 
-In place: the hero (pedicure), "the room" (detail work), and three gallery sets.
-The design calls for **six** desktop gallery tiles (four on mobile), so three more
-client-work photos are still wanted — the gallery renders however many exist.
+In place: the hero (pedicure), "the room" (salon interior), and five gallery sets.
+The mobile gallery is complete at four tiles. Desktop is designed for **six**, so
+one more client-work photo squares the grid at two per column — the gallery
+renders however many exist.
+
+"The room" holds the salon interior rather than the lash-detail shot the original
+mockup used: the design file labels that slot "The room — chairs, light", and the
+handoff flagged the lash image as a poor match for the copy beside it.
+`public/images/the-room-detail.webp` is kept in the repo but is no longer
+referenced — delete it, or point `roomPhoto.src` back at it, as you prefer.
 
 Two known gaps:
 
 - `public/images/hero-pedicure.jpg` is only **500x500**. It cover-crops into a
   roughly 772x640 frame on desktop, so it upscales and reads soft — noticeably so
   on a retina screen. Ask the client for the original at >=1600px on the long edge.
+  Every other photo is 1500x2000 and has resolution to spare.
 - The gallery shots have the salon's business card composited into the frame,
   which reads as social-media styling rather than portfolio work. Cleaner crops
   would serve this layout better.
@@ -97,7 +105,7 @@ Two properties are load-bearing and should survive any refactor:
 ## Open items for the client
 
 1. **Booking provider URL** → `BOOKING_URL` in `src/content/site.ts` (currently `#booking`).
-2. Three more gallery photos to reach the designed six-up, plus a higher-resolution
+2. One more gallery photo to reach the designed six-up, plus a higher-resolution
    original of the hero shot (the supplied file is 500x500).
 3. The reviewer's first name, to replace the `Satisfied Customer` byline.
 4. Instagram / Facebook / Google Business URLs (currently `#` placeholders).

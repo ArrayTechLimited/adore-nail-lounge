@@ -131,11 +131,14 @@ export const heroPhoto: Photo = {
 
 export const roomPhoto: Photo = {
   id: "room",
-  label: "The room — detail work",
-  src: "/images/the-room-detail.webp",
-  width: 1350,
-  height: 500,
-  alt: "Close detail work with tweezers during a lash treatment",
+  // The design file labels this slot "The room — chairs, light", so the salon
+  // interior goes here rather than the lash-detail banner the mockup used —
+  // the handoff flagged that shot as a mismatch with the copy beside it.
+  label: "The room — chairs, light",
+  src: "/images/the-room-interior.jpg",
+  width: 1500,
+  height: 2000,
+  alt: "The pedicure chairs at Adore Nail Lounge, lit by the front windows",
 };
 
 export const galleryPhotos: Photo[] = [
@@ -166,8 +169,25 @@ export const galleryPhotos: Photo[] = [
     onMobile: true,
     alt: "Almond nails with red tips, yellow line work and hand-painted daisies",
   },
-  // Three more slots to reach the designed six-up desktop gallery. Add an entry
-  // per photo — `onMobile: true` puts one in the four-tile mobile subset.
+  {
+    id: "g4",
+    label: "Glitter French",
+    src: "/images/gallery/glitter-french-coffin.jpg",
+    width: 1500,
+    height: 2000,
+    onMobile: true,
+    alt: "Matte nude coffin acrylics finished with wide iridescent glitter tips",
+  },
+  {
+    id: "g5",
+    label: "Pink French",
+    src: "/images/gallery/pink-french-natural.jpg",
+    width: 1500,
+    height: 2000,
+    alt: "Soft pink French tips on short natural nails",
+  },
+  // One more photo completes the designed six-up desktop grid (two per column).
+  // Add an entry — `onMobile: true` puts it in the four-tile mobile subset.
 ];
 
 export const copy = {
