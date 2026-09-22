@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
-    padding: var(--space-2) var(--space-8);
+    padding: var(--space-2) calc(var(--space-8) + var(--bleed));
     background: var(--a-ink);
   }
 }
@@ -118,7 +118,7 @@
 @media (min-width: 1024px) {
   .bar {
     gap: var(--space-8);
-    padding: var(--space-4) var(--space-8);
+    padding: var(--space-4) calc(var(--space-8) + var(--bleed));
   }
 
   .logo {

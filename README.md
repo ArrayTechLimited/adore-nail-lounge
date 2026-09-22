@@ -34,6 +34,20 @@ npm run typecheck
 | `src/components/*.tsx` | One component per section, in document order |
 | `public/` | Logo (dark + light knockout variant) |
 
+## Width cap
+
+The design is drawn at exactly 1440px, and the two-column rows pair a
+fixed-width text column with a flexible image column. Without a cap, every pixel
+of viewport past 1440 goes to the image column while its height stays governed by
+the text beside it — so on a wide monitor the photo frames grow wider and
+relatively shorter, and cover-crop slices away more of each photo. At 1920 the
+hero was showing 47% of its photo instead of 75%.
+
+Sections therefore inset their content past 1440 (`--bleed` in `globals.css`)
+while keeping their background full-bleed, so the alternating espresso and
+rosewater masses still run edge to edge on any monitor and the frames are
+identical at 1440, 1920 and 2560.
+
 ## Photography
 
 Every slot is filled with a distinct photo: the hero (pedicure), "the room"

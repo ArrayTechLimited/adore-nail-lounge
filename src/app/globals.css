@@ -36,6 +36,12 @@
   --section-x: var(--space-4);
 
   --ease: cubic-bezier(0.2, 0.75, 0.2, 1);
+
+  /* The design is drawn at exactly 1440px. Past that, sections keep their
+     full-bleed background but inset their content, so the flexible image
+     columns stop stretching wider (and therefore shorter) with the viewport. */
+  --page-max: 1440px;
+  --bleed: max(0px, calc((100% - var(--page-max)) / 2));
 }
 
 @media (min-width: 1024px) {

@@ -9,12 +9,16 @@
     display: flex;
     background: var(--a-ground);
     border-top: 2px solid var(--a-ink);
+    padding-inline: var(--bleed);
   }
 }
 
 .copy {
   width: 620px;
   flex: 0 0 620px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: calc(var(--space-8) * 1.6) var(--space-8);
 }
 

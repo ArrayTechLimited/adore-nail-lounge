@@ -1,6 +1,7 @@
 .hero {
   display: flex;
   background: var(--a-deep);
+  padding-inline: var(--bleed);
 }
 
 .copy {

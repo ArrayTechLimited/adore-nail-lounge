@@ -6,6 +6,7 @@
 @media (min-width: 1024px) {
   .row {
     flex-direction: row;
+    padding-inline: var(--bleed);
   }
 }
 

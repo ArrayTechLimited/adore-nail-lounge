@@ -1,6 +1,6 @@
 .footer {
   background: var(--a-deep);
-  padding: var(--space-8) var(--space-4) var(--space-6);
+  padding: var(--space-8) calc(var(--space-4) + var(--bleed)) var(--space-6);
 }
 
 .logo {
@@ -84,7 +84,7 @@
 
 @media (min-width: 1024px) {
   .footer {
-    padding: calc(var(--space-8) * 1.8) var(--space-8) var(--space-8);
+    padding: calc(var(--space-8) * 1.8) calc(var(--space-8) + var(--bleed)) var(--space-8);
   }
 
   .upper {

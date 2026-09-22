@@ -48,7 +48,7 @@ export default function Visit() {
             <ImageSlot
               photo={visitPhoto}
               fit="cover"
-              minHeight={440}
+              minHeight={600}
               sizes="(min-width: 1024px) 55vw, 100vw"
             />
           </Reveal>

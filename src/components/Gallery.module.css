@@ -1,5 +1,5 @@
 .gallery {
-  padding: var(--section-y) var(--section-x);
+  padding: var(--section-y) calc(var(--section-x) + var(--bleed));
   background: var(--a-ground);
 }
 
