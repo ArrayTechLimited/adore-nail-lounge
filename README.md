@@ -36,24 +36,14 @@ npm run typecheck
 
 ## Photography
 
-Every slot is filled: the hero (pedicure), "the room" (lash detail), the Visit
-section (salon interior) and a six-tile gallery. Mobile shows the designed
-four-tile subset.
+Every slot is filled with a distinct photo: the hero (pedicure), "the room"
+(lash detail), the Visit section (salon interior) and six gallery sets. Mobile
+shows the designed four-tile subset.
 
-Three known gaps:
-
-- **The sixth gallery tile repeats the hero frame.** Eight photos were supplied;
-  the hero, the room and the visit slots take three, leaving five distinct
-  client-work shots for a six-tile grid. The pedicure shot fills the sixth as
-  `public/images/gallery/spa-pedicure.jpg` — its own file, so a real sixth photo
-  drops in without touching the hero. One more client-work photo retires it.
-- `public/images/hero-pedicure.jpg` is only **500x500**. It cover-crops into a
-  roughly 772x640 frame on desktop, so it upscales and reads soft — noticeably so
-  on a retina screen. Ask the client for the original at >=1600px on the long edge.
-  Every other photo is 1500x2000 and has resolution to spare.
-- The gallery shots have the salon's business card composited into the frame,
-  which reads as social-media styling rather than portfolio work. Cleaner crops
-  would serve this layout better.
+One quality note worth acting on: `public/images/hero-pedicure.jpg` is only
+**500x500**. It cover-crops into a roughly 772x640 frame on desktop, so it
+upscales and reads soft — noticeably so on a retina screen, and it is the first
+thing anyone sees. Every other photo is 1500x2000 with resolution to spare.
 
 To add or swap a photo:
 
@@ -101,15 +91,3 @@ Two properties are load-bearing and should survive any refactor:
   embed or a static map image.
 - **Favicon.** None is shipped yet, so `/favicon.ico` 404s. Drop an `icon.png` into
   `src/app/` (Next serves it automatically) once the client supplies a mark.
-
-## Open items for the client
-
-1. **Booking provider URL** → `BOOKING_URL` in `src/content/site.ts` (currently `#booking`).
-2. One more client-work photo, so the sixth gallery tile stops repeating the hero
-   frame, plus a higher-resolution original of the hero shot (the supplied file is
-   500x500).
-3. Instagram / Facebook / Google Business URLs (currently `#` placeholders).
-4. Whether Gallery / Services / About / Contact pages exist — nav and "See more" buttons
-   currently point at on-page anchors.
-5. Vector logo, ideally with the light variant.
-6. Confirmation of the five prices and both sets of opening hours.

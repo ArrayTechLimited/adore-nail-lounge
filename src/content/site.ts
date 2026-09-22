@@ -186,15 +186,11 @@ export const galleryPhotos: Photo[] = [
   },
   {
     id: "g6",
-    label: "Spa pedicure",
-    // Same frame as the hero: eight photos were supplied and the hero, the room
-    // and the visit slots take three, which leaves five distinct client-work
-    // shots for a six-tile grid. Kept as its own file so a real sixth photo can
-    // replace it without touching the hero.
-    src: "/images/gallery/spa-pedicure.jpg",
-    width: 500,
-    height: 500,
-    alt: "A spa pedicure being finished, toes in black polish beside pink orchids",
+    label: "White French",
+    src: "/images/gallery/white-french-square.jpg",
+    width: 1500,
+    height: 2000,
+    alt: "Square-tipped nails in a crisp white French over a soft pink base",
   },
 ];
 
