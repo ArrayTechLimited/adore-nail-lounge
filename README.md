@@ -36,19 +36,17 @@ npm run typecheck
 
 ## Photography
 
-In place: the hero (pedicure), "the room" (salon interior), and five gallery sets.
-The mobile gallery is complete at four tiles. Desktop is designed for **six**, so
-one more client-work photo squares the grid at two per column — the gallery
-renders however many exist.
+Every slot is filled: the hero (pedicure), "the room" (lash detail), the Visit
+section (salon interior) and a six-tile gallery. Mobile shows the designed
+four-tile subset.
 
-"The room" holds the salon interior rather than the lash-detail shot the original
-mockup used: the design file labels that slot "The room — chairs, light", and the
-handoff flagged the lash image as a poor match for the copy beside it.
-`public/images/the-room-detail.webp` is kept in the repo but is no longer
-referenced — delete it, or point `roomPhoto.src` back at it, as you prefer.
+Three known gaps:
 
-Two known gaps:
-
+- **The sixth gallery tile repeats the hero frame.** Eight photos were supplied;
+  the hero, the room and the visit slots take three, leaving five distinct
+  client-work shots for a six-tile grid. The pedicure shot fills the sixth as
+  `public/images/gallery/spa-pedicure.jpg` — its own file, so a real sixth photo
+  drops in without touching the hero. One more client-work photo retires it.
 - `public/images/hero-pedicure.jpg` is only **500x500**. It cover-crops into a
   roughly 772x640 frame on desktop, so it upscales and reads soft — noticeably so
   on a retina screen. Ask the client for the original at >=1600px on the long edge.
@@ -97,16 +95,19 @@ Two properties are load-bearing and should survive any refactor:
 - **Logo.** The handoff footer used `filter: invert(1)` on the dark mark. This ships a real
   light knockout variant (`public/adore-logo-light.png`, derived from the supplied PNG's
   alpha channel) instead. Replace both with vector once the client supplies SVG.
-- **Map.** The desktop Visit section embeds a keyless Google Maps iframe. Swap
-  `mapEmbedUrl` in `src/content/site.ts` for a Maps Embed API URL if the client provides a
-  key. An address card sits behind the iframe so a blocked or failed embed is never an
-  empty box.
+- **Map.** The desktop Visit section shows the salon interior rather than a map, per the
+  client's call. Directions are still one tap away — "Get directions" opens Google Maps for
+  the address in a new tab. To put a map back, swap `visitPhoto` in `Visit.tsx` for an
+  embed or a static map image.
+- **Favicon.** None is shipped yet, so `/favicon.ico` 404s. Drop an `icon.png` into
+  `src/app/` (Next serves it automatically) once the client supplies a mark.
 
 ## Open items for the client
 
 1. **Booking provider URL** → `BOOKING_URL` in `src/content/site.ts` (currently `#booking`).
-2. One more gallery photo to reach the designed six-up, plus a higher-resolution
-   original of the hero shot (the supplied file is 500x500).
+2. One more client-work photo, so the sixth gallery tile stops repeating the hero
+   frame, plus a higher-resolution original of the hero shot (the supplied file is
+   500x500).
 3. The reviewer's first name, to replace the `Satisfied Customer` byline.
 4. Instagram / Facebook / Google Business URLs (currently `#` placeholders).
 5. Whether Gallery / Services / About / Contact pages exist — nav and "See more" buttons

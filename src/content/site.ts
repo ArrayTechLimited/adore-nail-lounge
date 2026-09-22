@@ -52,14 +52,6 @@ export const directionsUrl = `https://www.google.com/maps/search/?api=1&query=${
   salon.address.query,
 )}`;
 
-/**
- * Keyless Google Maps embed. Swap for the Maps Embed API
- * (`https://www.google.com/maps/embed/v1/place?key=…`) if the client provides a key.
- */
-export const mapEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(
-  salon.address.query,
-)}&output=embed`;
-
 export const navLinks = [
   { label: "Home", href: "/", current: true },
   { label: "About us", href: "#about" },
@@ -131,14 +123,21 @@ export const heroPhoto: Photo = {
 
 export const roomPhoto: Photo = {
   id: "room",
-  // The design file labels this slot "The room — chairs, light", so the salon
-  // interior goes here rather than the lash-detail banner the mockup used —
-  // the handoff flagged that shot as a mismatch with the copy beside it.
-  label: "The room — chairs, light",
+  label: "The room — detail work",
+  src: "/images/the-room-detail.webp",
+  width: 1350,
+  height: 500,
+  alt: "Close detail work with tweezers during a lash treatment",
+};
+
+/** The Visit section shows the salon interior in place of an embedded map. */
+export const visitPhoto: Photo = {
+  id: "visit",
+  label: "Salon interior — pedicure chairs",
   src: "/images/the-room-interior.jpg",
   width: 1500,
   height: 2000,
-  alt: "The pedicure chairs at Adore Nail Lounge, lit by the front windows",
+  alt: "The row of pedicure chairs at Adore Nail Lounge, lit by the front windows",
 };
 
 export const galleryPhotos: Photo[] = [
@@ -186,8 +185,18 @@ export const galleryPhotos: Photo[] = [
     height: 2000,
     alt: "Soft pink French tips on short natural nails",
   },
-  // One more photo completes the designed six-up desktop grid (two per column).
-  // Add an entry — `onMobile: true` puts it in the four-tile mobile subset.
+  {
+    id: "g6",
+    label: "Spa pedicure",
+    // Same frame as the hero: eight photos were supplied and the hero, the room
+    // and the visit slots take three, which leaves five distinct client-work
+    // shots for a six-tile grid. Kept as its own file so a real sixth photo can
+    // replace it without touching the hero.
+    src: "/images/gallery/spa-pedicure.jpg",
+    width: 500,
+    height: 500,
+    alt: "A spa pedicure being finished, toes in black polish beside pink orchids",
+  },
 ];
 
 export const copy = {

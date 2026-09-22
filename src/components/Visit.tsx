@@ -1,6 +1,7 @@
+import ImageSlot from "@/components/ui/ImageSlot";
 import Reveal from "@/components/ui/Reveal";
 import Button from "@/components/ui/Button";
-import { copy, directionsUrl, mapEmbedUrl, salon } from "@/content/site";
+import { copy, directionsUrl, salon, visitPhoto } from "@/content/site";
 import styles from "./Visit.module.css";
 
 export default function Visit() {
@@ -44,19 +45,12 @@ export default function Visit() {
 
         <div className={styles.media}>
           <Reveal kind="tile" delay={0.12} style={{ height: "100%" }}>
-            <div className={styles.mapFrame}>
-              <div className={styles.mapFallback} aria-hidden="true">
-                <span>{salon.address.line1}</span>
-                <span>{salon.address.line2}</span>
-              </div>
-              <iframe
-                title={`Map showing ${salon.name} at ${salon.address.legal}`}
-                src={mapEmbedUrl}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                allowFullScreen
-              />
-            </div>
+            <ImageSlot
+              photo={visitPhoto}
+              fit="cover"
+              minHeight={440}
+              sizes="(min-width: 1024px) 55vw, 100vw"
+            />
           </Reveal>
         </div>
       </section>
