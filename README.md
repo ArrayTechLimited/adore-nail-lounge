@@ -80,6 +80,43 @@ Two properties are load-bearing and should survive any refactor:
 2. **`prefers-reduced-motion: reduce` forces the resting state** outright, rather than only
    disabling the transition.
 
+## Deployment (Vercel)
+
+The repo is deploy-ready with no configuration: Vercel detects Next.js, runs
+`npm run build`, and serves the prerendered output. `.nvmrc` pins Node 22 so the
+build matches what was verified locally.
+
+1. Sign in at [vercel.com](https://vercel.com) with the GitHub account that can
+   see `ArrayTechLimited/adore-nail-lounge`.
+2. **Add New… → Project**, then import that repo. If it is not listed, use
+   *Adjust GitHub App Permissions* and grant Vercel access to it — for an
+   organisation repo an org owner may have to approve.
+3. Leave every build setting at its detected default and deploy.
+
+Pushes to `main` redeploy production; any other branch gets a preview URL.
+
+### Environment variables
+
+Both are optional and neither is a secret.
+
+| Variable | When to set it |
+|---|---|
+| `ALLOW_INDEXING` | `true` once the client signs off, to let search engines index the site. Omitted, the page serves `noindex, nofollow` — see below. |
+| `SITE_URL` | The custom domain, e.g. `https://adorenaillounge.com`, once one is attached. Without it, Open Graph URLs fall back to the Vercel deployment host, which is correct for previews. |
+
+### Search indexing is off on purpose
+
+This page represents a real business that has not signed off on it, so it ships
+`noindex, nofollow`. Letting a pitch demo into Google competes with the salon's
+own listings and confuses customers. Set `ALLOW_INDEXING=true` in the Vercel
+project and redeploy when it becomes the real site.
+
+### Licensing
+
+Vercel's Hobby plan is for non-commercial use. A demo shown to a prospect fits;
+the salon's live business site does not — that needs Pro. Budget for it, or move
+to Cloudflare Pages or Netlify, whose free tiers permit commercial use.
+
 ## Known deviations from the handoff
 
 - **Logo.** The handoff footer used `filter: invert(1)` on the dark mark. This ships a real
@@ -89,5 +126,7 @@ Two properties are load-bearing and should survive any refactor:
   client's call. Directions are still one tap away — "Get directions" opens Google Maps for
   the address in a new tab. To put a map back, swap `visitPhoto` in `Visit.tsx` for an
   embed or a static map image.
-- **Favicon.** None is shipped yet, so `/favicon.ico` 404s. Drop an `icon.png` into
-  `src/app/` (Next serves it automatically) once the client supplies a mark.
+- **Icons.** The favicon (`src/app/icon.png`, plus `public/favicon.ico`) and the social
+  preview (`src/app/opengraph-image.jpg`) are generated from the supplied logo — the
+  monogram knocked out on espresso, and the wordmark beside a client-work photo. Replace
+  both if the client supplies real brand assets.
