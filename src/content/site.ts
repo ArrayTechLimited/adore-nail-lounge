@@ -40,9 +40,8 @@ export const salon = {
     count: "600+",
     summaryShort: "· 600+ Google reviews",
     a11yLabel: "Rated 4.7 out of 5 from over 600 Google reviews",
-    /** TODO(client): the reviewer's real first name, to replace the generic byline. */
     quote: "I adore Adore! Very clean salon, excellent service, even better results!",
-    byline: "Satisfied Customer · Google review",
+    byline: "Alexandra · Google review",
     /** TODO(client): link to the Google reviews listing. */
     url: "#reviews",
   },

@@ -108,9 +108,8 @@ Two properties are load-bearing and should survive any refactor:
 2. One more client-work photo, so the sixth gallery tile stops repeating the hero
    frame, plus a higher-resolution original of the hero shot (the supplied file is
    500x500).
-3. The reviewer's first name, to replace the `Satisfied Customer` byline.
-4. Instagram / Facebook / Google Business URLs (currently `#` placeholders).
-5. Whether Gallery / Services / About / Contact pages exist — nav and "See more" buttons
+3. Instagram / Facebook / Google Business URLs (currently `#` placeholders).
+4. Whether Gallery / Services / About / Contact pages exist — nav and "See more" buttons
    currently point at on-page anchors.
-6. Vector logo, ideally with the light variant.
-7. Confirmation of the five prices and both sets of opening hours.
+5. Vector logo, ideally with the light variant.
+6. Confirmation of the five prices and both sets of opening hours.
