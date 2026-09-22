@@ -34,9 +34,22 @@ npm run typecheck
 | `src/components/*.tsx` | One component per section, in document order |
 | `public/` | Logo (dark + light knockout variant) |
 
-## Adding the real photography
+## Photography
 
-Every photo is a labelled placeholder. To swap one in:
+In place: the hero (pedicure), "the room" (detail work), and three gallery sets.
+The design calls for **six** desktop gallery tiles (four on mobile), so three more
+client-work photos are still wanted — the gallery renders however many exist.
+
+Two known gaps:
+
+- `public/images/hero-pedicure.jpg` is only **500x500**. It cover-crops into a
+  roughly 772x640 frame on desktop, so it upscales and reads soft — noticeably so
+  on a retina screen. Ask the client for the original at >=1600px on the long edge.
+- The gallery shots have the salon's business card composited into the frame,
+  which reads as social-media styling rather than portfolio work. Cleaner crops
+  would serve this layout better.
+
+To add or swap a photo:
 
 1. Drop the file into `public/images/` (gallery shots into `public/images/gallery/`).
 2. In `src/content/site.ts`, set that slot's `src`, and its `width`/`height` if known.
@@ -84,7 +97,8 @@ Two properties are load-bearing and should survive any refactor:
 ## Open items for the client
 
 1. **Booking provider URL** → `BOOKING_URL` in `src/content/site.ts` (currently `#booking`).
-2. Real photography for all nine slots.
+2. Three more gallery photos to reach the designed six-up, plus a higher-resolution
+   original of the hero shot (the supplied file is 500x500).
 3. The reviewer's first name, to replace the `Satisfied Customer` byline.
 4. Instagram / Facebook / Google Business URLs (currently `#` placeholders).
 5. Whether Gallery / Services / About / Contact pages exist — nav and "See more" buttons

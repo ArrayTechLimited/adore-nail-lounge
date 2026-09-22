@@ -119,25 +119,55 @@ export type Photo = {
 
 export const heroPhoto: Photo = {
   id: "hero",
-  label: "Hero — salon interior",
-  src: null,
-  alt: "A pedicure in progress at Adore Nail Lounge",
+  label: "Hero — pedicure in progress",
+  // NOTE: the supplied file is only 500x500. It cover-crops into a ~772x640
+  // frame on desktop, so it upscales and reads soft. Ask the client for the
+  // original at >=1600px on the long edge.
+  src: "/images/hero-pedicure.jpg",
+  width: 500,
+  height: 500,
+  alt: "A pedicure in progress, toes finished in black polish beside pink orchids",
 };
 
 export const roomPhoto: Photo = {
   id: "room",
-  label: "The room — chairs, light",
-  src: null,
-  alt: "Close detail work at the manicure table",
+  label: "The room — detail work",
+  src: "/images/the-room-detail.webp",
+  width: 1350,
+  height: 500,
+  alt: "Close detail work with tweezers during a lash treatment",
 };
 
 export const galleryPhotos: Photo[] = [
-  { id: "g1", label: "Gel almond", src: null, onMobile: true, alt: "Deep red gel almond set" },
-  { id: "g2", label: "Chrome", src: null, onMobile: true, alt: "Chrome finish nail set" },
-  { id: "g3", label: "French tip", src: null, onMobile: true, alt: "Classic French tip manicure" },
-  { id: "g4", label: "Nail art", src: null, onMobile: true, alt: "Hand-painted nail art" },
-  { id: "g5", label: "Spa pedicure", src: null, alt: "Finished spa pedicure" },
-  { id: "g6", label: "Natural nail", src: null, alt: "Natural nail care, bare finish" },
+  {
+    id: "g1",
+    label: "Classic red",
+    src: "/images/gallery/classic-red-coffin.jpg",
+    width: 1500,
+    height: 2000,
+    onMobile: true,
+    alt: "Two hands with long coffin nails in glossy classic red",
+  },
+  {
+    id: "g2",
+    label: "Deep red",
+    src: "/images/gallery/deep-red-coffin.jpg",
+    width: 1500,
+    height: 2000,
+    onMobile: true,
+    alt: "Coffin nails in a deep wine red, photographed on a crystal backdrop",
+  },
+  {
+    id: "g3",
+    label: "Floral nail art",
+    src: "/images/gallery/floral-nail-art.jpg",
+    width: 1500,
+    height: 2000,
+    onMobile: true,
+    alt: "Almond nails with red tips, yellow line work and hand-painted daisies",
+  },
+  // Three more slots to reach the designed six-up desktop gallery. Add an entry
+  // per photo — `onMobile: true` puts one in the four-tile mobile subset.
 ];
 
 export const copy = {
